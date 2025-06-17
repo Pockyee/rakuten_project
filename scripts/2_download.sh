@@ -18,8 +18,6 @@ wget --header="Cookie: $COOKIE" --header="User-Agent: $UA" "https://challengedat
 wget --header="Cookie: $COOKIE" --header="User-Agent: $UA" "https://challengedata.ens.fr/participants/challenges/35/download/x-test" -O x_test.csv
 wget --header="Cookie: $COOKIE" --header="User-Agent: $UA" "https://challengedata.ens.fr/participants/challenges/35/download/supplementary-files" -O images.zip
 
-echo "Installing base package using apt ..."
-sudo apt update && sudo apt install -y unzip
 
 echo "Extracting images ..."
 cd "$PROJECT_ROOT/raw_data"

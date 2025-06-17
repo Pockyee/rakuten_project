@@ -32,3 +32,6 @@ docker compose version
 
 echo "Docker Compose installation completed successfully."
 
+echo "Installing unzip..."
+sudo apt-get install -y unzip
+echo "Unzip installation completed successfully."
