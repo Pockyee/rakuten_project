@@ -2,6 +2,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime
 from tasks.download import download_raw_data
+from tasks.utils import unzip_file
 
 with DAG(
     dag_id='download_data',
@@ -15,9 +16,18 @@ with DAG(
     catchup=False
 ) as dag:
     
-    task = PythonOperator(
+    task_1 = PythonOperator(
         task_id='download_raw_data',
         python_callable=download_raw_data,
     )
     
- 
+    task_2 = PythonOperator(
+        task_id='unzip_image',
+        python_callable= unzip_file,
+        op_kwargs={
+            'zip_path': "/opt/airflow/raw_data/images.zip",
+            'extract_to': "/opt/airflow/raw_data/"
+        }  
+    )
+    
+    task_1 >> task_2
