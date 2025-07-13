@@ -68,7 +68,7 @@
             DataBacklog --> SmartTrigger
             DriftDetection --> SmartTrigger
             SmartTrigger --> RetrainTrigger
-            RetrainTrigger -. "`_only if necessary_`" .-> MLDAG
+            %%RetrainTrigger -. "`_only if necessary_`" .-> MLDAG
 
         end
 
