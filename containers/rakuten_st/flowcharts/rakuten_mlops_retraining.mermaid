@@ -13,7 +13,7 @@ graph TD
     %% Immediate Training Decision [ITD]
     TrainingTrigger{"`**Trigger Training?**
     - Sufficient data?
-    _(2k samples)_
+    _2k+ samples_
     - Accuracy below threshold?
     _F1 Score vs 73.4%_
     - Drift above threshold?`"}
@@ -47,12 +47,12 @@ graph TD
 
     %% Deployment Decision [DD]
     
-    DeploymentDecision{"Better Than
-    Current Model?"}
+    DeploymentDecision{"`Better Than
+    Current Model?`"}
     
-    ModelDeployment["Deploy New Model"]
+    ModelDeployment["`Deploy New Model`"]
     
-    KeepCurrent["Keep Current Model"]
+    KeepCurrent["`Keep Current Model`"]
 
     %% DD EDGES
     ModelRegistry --> DeploymentDecision
@@ -61,8 +61,8 @@ graph TD
 
 
     %% REAL-TIME SERVING [RTS]
-    ProductionAPI["Production FastAPI"]
-    RealTimePredictions["Real-time Predictions"]
+    ProductionAPI["`Production FastAPI`"]
+    RealTimePredictions["`Real-time Predictions`"]
 
     %% RTS EDGES
     ModelDeployment --> ProductionAPI

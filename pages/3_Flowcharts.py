@@ -3,6 +3,10 @@ import streamlit as st
 from streamlit_mermaid import st_mermaid
 from containers.rakuten_st.streamlit_utils import add_pagination_and_footer
 
+# Use timestamp as unique key
+import time
+unique_key = f"mermaid_{int(time.time())}"
+
 st.set_page_config(
     page_title="MAY25 BDS // Flowcharts",
     page_icon="containers/rakuten_st/images/logos/rakuten-favicon.ico",
@@ -24,8 +28,8 @@ with architecture_tab:
 with retraining_tab:
     with open("containers/rakuten_st/flowcharts/rakuten_mlops_retraining.mermaid", "r") as file:
         retraining_fc = file.read() # _fc as in "_flowchart"
-        st_mermaid(retraining_fc, height="auto", pan=True, zoom=True, show_controls=True)
-
+        st_mermaid(code=retraining_fc, height="auto", pan=True, zoom=True, show_controls=True,
+                   key=unique_key)  # Use unique key to force re-rendering
 
 # Pagination and footer
 st.markdown("---")
