@@ -19,4 +19,4 @@ mkdir -p "$PROJECT_ROOT/processed_data" "$PROJECT_ROOT/models"
 
 cd "$PROJECT_ROOT"
 echo "Starting Docker Compose services..."
-docker compose up -d
+docker compose -p rakuten_project up -d
