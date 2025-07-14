@@ -35,7 +35,8 @@
 
             %% DI EDGES 
             DataDAG -. "`_batch upload of 2k products every 15min_`" .-> DataDAG
-            DataDAG --> PostgreSQL & MinIO
+            DataDAG --> PostgreSQL
+            DataDAG -. "`_(currently not used)_`" .-> MinIO
             Airflow --> DataDAG
         end
         
