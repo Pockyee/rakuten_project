@@ -75,7 +75,7 @@ async def list_models():
     from mlflow.tracking import MlflowClient
     client = MlflowClient(tracking_uri="http://mlflow:5000") 
     try:
-        models = client.list_registered_models()
+        models = client.search_registered_models()
         model_names = [m.name for m in models]
         return {
             "models": model_names,
