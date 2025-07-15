@@ -21,6 +21,7 @@ FASTAPI_PUBLIC_URL = f"http://{PUBLIC_IP}:8000"
 
 st.markdown(f"""
 This page demonstrates real-time interaction with the Rakuten Product Category API.
+            
 Connected to: `{FASTAPI_INT_URL}`
 Public URL: `{FASTAPI_PUBLIC_URL}`
 """)
