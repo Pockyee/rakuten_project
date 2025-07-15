@@ -13,7 +13,7 @@ from get_public_ip import get_public_ip
 
 # Set MLflow Tracking URI
 public_ip = get_public_ip()
-mlflow.set_tracking_uri("http://mlflow:5001")
+mlflow.set_tracking_uri("http://mlflow:5000")
 public_url = f"http://{public_ip}:5001"
 
 # Configure logging
@@ -73,7 +73,7 @@ async def health_check():
 @app.get("/models/")
 async def list_models():
     from mlflow.tracking import MlflowClient
-    client = MlflowClient(tracking_uri="http://mlflow:5001") 
+    client = MlflowClient(tracking_uri="http://mlflow:5000") 
     try:
         models = client.list_registered_models()
         model_names = [m.name for m in models]
