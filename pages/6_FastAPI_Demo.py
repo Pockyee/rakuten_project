@@ -93,7 +93,7 @@ endpoint = st.selectbox(
     ["/health", "/models/", "/predict/"]
 )
 
-if st.button("Test Endpoint"):
+if st.button("Test Endpoint", type="primary"):
     try:
         if endpoint == "/health":
             response = requests.get(f"{FASTAPI_INT_URL}{endpoint}")
