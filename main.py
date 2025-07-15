@@ -13,7 +13,8 @@ from get_public_ip import get_public_ip
 
 # Set MLflow Tracking URI
 public_ip = get_public_ip()
-mlflow.set_tracking_uri(f"http://{public_ip}:5001")  
+mlflow.set_tracking_uri("http://mlflow:5001")
+public_url = f"http://{public_ip}:5001"
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -64,7 +65,8 @@ async def health_check():
         "training_active": training_status["is_training"],
         "services": {
             "api": "running",
-            "mlflow_tracking": mlflow.get_tracking_uri()
+            "mlflow_tracking (internal)": mlflow.get_tracking_uri(),
+            "mlflow_tracking (public)": public_url,
         }
     }
 
