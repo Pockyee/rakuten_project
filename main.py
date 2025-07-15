@@ -3,12 +3,9 @@ from pydantic import BaseModel
 from typing import Dict, Any, List
 import logging
 import mlflow
-import mlflow.pyfunc
 import pandas as pd
-import os
-import subprocess
-import json as json_lib
-import psutil
+
+# Add ML container path to enable importing prediction functions
 import sys
 sys.path.append('/app/containers/rakuten-ml')
 from predict import predict_single
