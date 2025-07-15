@@ -9,7 +9,7 @@ import pandas as pd
 import sys
 sys.path.append('/app/containers/rakuten-ml')
 from predict import predict_single
-from get_public_up import get_public_ip
+from get_public_ip import get_public_ip
 
 # Set MLflow Tracking URI
 public_ip = get_public_ip()
