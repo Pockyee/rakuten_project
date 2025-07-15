@@ -16,7 +16,7 @@ st.title("FastAPI Demonstration")
 PUBLIC_IP = get_public_ip()
 
 # Get FastAPI URL from environment or default to localhost
-FASTAPI_INT_URL = os.getenv('FASTAPI_INT_URL', 'http://localhost:8000')
+FASTAPI_INT_URL = os.getenv('FASTAPI_URL', 'http://localhost:8000')
 FASTAPI_PUBLIC_URL = f"http://{PUBLIC_IP}:8000"
 
 st.markdown(f"""
