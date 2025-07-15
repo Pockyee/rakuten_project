@@ -39,8 +39,8 @@ class TrainingResponse(BaseModel):
     metrics: Dict[str, float] = {}
 
 class PredictionRequest(BaseModel):
-    title: str = ""
-    description: str = ""
+    title: str = "Piscine Intex Prism"
+    description: str = "Piscine avec liner renforcé de dernière génération structure renforcée en acier"
     model_id: str = None
 
 class PredictionResponse(BaseModel):
