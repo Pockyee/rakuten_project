@@ -22,8 +22,8 @@ FASTAPI_PUBLIC_URL = f"http://{PUBLIC_IP}:8000"
 st.markdown(f"""
 This page demonstrates real-time interaction with the Rakuten Product Category API.
             
-Connected to: `{FASTAPI_INT_URL}`
-Public URL: `{FASTAPI_PUBLIC_URL}`
+* Connected to: `{FASTAPI_INT_URL}`
+* Public URL: `{FASTAPI_PUBLIC_URL}`
 """)
 
 st.subheader("Product Prediction")
@@ -31,13 +31,13 @@ st.subheader("Product Prediction")
 # Input form
 with st.form("prediction_form"):
     title = st.text_input(
-        "Product Title (French)", 
+        "**Product Title** (French)", 
         value="Piscine Intex Prism",
         help="Enter the product title (in French)"
     )
     
-    description = st.text_area(
-        "Product Description (French)", 
+    description = st.text_input(
+        "**Product Description** (French)", 
         value="Piscine avec liner renforcé de dernière génération structure renforcée en acier",
         help="Enter the product description (in French)"
     )
@@ -61,8 +61,6 @@ if submitted and (title or description):
                 result = response.json()
                 prediction = result["predictions"][0]
                 
-                st.success("Prediction successful!")
-                
                 # Display main prediction
                 st.metric(
                     "Predicted Category",
@@ -72,10 +70,10 @@ if submitted and (title or description):
                 
                 # Display top 3 predictions
                 if len(prediction["top_3"]) > 1:
-                    st.subheader("Top 3 Predictions")
-                    for i, pred in enumerate(prediction["top_3"], 1):
-                        st.write(f"{i}. **{pred['category']}** ({pred['confidence']:.1%})")
-                
+                    with st.expander("**Show** Top 3 Predictions", expanded=False):
+                        for i, pred in enumerate(prediction["top_3"], 1):
+                            st.write(f"{i}. **{pred['category']}** ({pred['confidence']:.1%})")
+
             else:
                 st.error(f"Prediction failed: {response.status_code}")
                 st.code(response.text)
@@ -106,15 +104,15 @@ if st.button("Test Endpoint"):
                 f"{FASTAPI_INT_URL}{endpoint}",
                 json={"title": "Test", "description": "test product"}
             )
-        
-        st.code(f"Status: {response.status_code}")
-        st.json(response.json())
-        
+    
+        with st.expander(f"**Show** status code", expanded=False):
+            st.code(f"Status: {response.status_code}")
+
+        with st.expander("**Show** full response", expanded=False):
+            st.json(response.json())
+            
     except Exception as e:
         st.error(f"Request failed: {str(e)}")
-
-    with st.expander("**Show** full response", expanded=False):
-        st.json(response.json())
 
 # Pagination and footer
 st.markdown("---")
