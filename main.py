@@ -5,13 +5,15 @@ import logging
 import mlflow
 import pandas as pd
 
-# Add ML container path to enable importing prediction functions
+# Add ML container path to enable importing functions for prediction and public IP retrieval
 import sys
 sys.path.append('/app/containers/rakuten-ml')
 from predict import predict_single
+from get_public_up import get_public_ip
 
 # Set MLflow Tracking URI
-mlflow.set_tracking_uri("http://mlflow:5000")  
+public_ip = get_public_ip()
+mlflow.set_tracking_uri(f"http://{public_ip}:5000")  
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
