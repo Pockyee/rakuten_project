@@ -55,7 +55,7 @@ training_status = {"is_training": False, "last_result": None}
 
 @app.get("/")
 async def root():
-    return {"message": "Rakuten ML API is running", "status": "healthy"}
+    return {"message": "Rakuten Product Category API is running", "status": "healthy"}
 
 @app.get("/health")
 async def health_check():
