@@ -87,7 +87,6 @@ async def trigger_training(request: TrainingRequest, background_tasks: Backgroun
         logger.info("Starting training...")
 
         # For now, simulate a training run and log a dummy model
-        import tempfile
         from sklearn.linear_model import LogisticRegression
 
         # Dummy data
