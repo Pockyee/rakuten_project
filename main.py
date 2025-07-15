@@ -13,7 +13,7 @@ from get_public_up import get_public_ip
 
 # Set MLflow Tracking URI
 public_ip = get_public_ip()
-mlflow.set_tracking_uri(f"http://{public_ip}:5000")  
+mlflow.set_tracking_uri(f"http://{public_ip}:5001")  
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
