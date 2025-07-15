@@ -73,13 +73,19 @@ async def health_check():
 @app.get("/models/")
 async def list_models():
     from mlflow.tracking import MlflowClient
-    client = MlflowClient()
-    models = client.list_registered_models()
-    model_names = [m.name for m in models]
-    return {
-        "models": model_names,
-        "message": "Model registry from MLflow tracking server"
-    }
+    client = MlflowClient(tracking_uri="http://mlflow:5001") 
+    try:
+        models = client.list_registered_models()
+        model_names = [m.name for m in models]
+        return {
+            "models": model_names,
+        "   message": "Model registry from MLflow tracking server"
+        }
+    except Exception as e:
+        return {
+            "models": [],
+            "message": f"MLflow connection error: {str(e)}"
+        }
 
 @app.post("/training/", response_model=TrainingResponse)
 async def trigger_training(request: TrainingRequest, background_tasks: BackgroundTasks):
