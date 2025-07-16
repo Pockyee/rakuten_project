@@ -87,6 +87,9 @@ if submitted and (title or description):
         except Exception as e:
             st.error(f"Error: {str(e)}")
 
+# Horizontal line as divider for better layout
+st.divider()
+
 # Interactive API explorer
 st.subheader("API endpoints")
 
