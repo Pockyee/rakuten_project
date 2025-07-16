@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 import os
 from datetime import datetime, timedelta
-from containers.rakuten_st.streamlit_utils import add_pagination_and_footer
+from containers.rakuten_st.streamlit_utils import add_pagination_and_footer, get_public_ip
 
 # Configure page and set up Prometheus connection
 st.set_page_config(
@@ -15,13 +15,17 @@ st.set_page_config(
 st.progress(8 / 10)
 st.title("Monitoring and Operations")
 
-# Use environment variable set in docker-compose for container networking
-PROMETHEUS_URL = os.getenv('PROMETHEUS_URL', 'http://localhost:9090')
+PUBLIC_IP = get_public_ip()
+
+# Use environment variable set in docker-compose for container mlflowking
+PROMETHEUS_INT_URL = os.getenv('PROMETHEUS_URL', 'http://localhost:9090')
+PROMETHEUS_PUBLIC_URL = f"http://{PUBLIC_IP}:9090"
+
 
 def query_prometheus(query, start=None, end=None, step=None):
     """I query Prometheus for metrics data with optional time range"""
     endpoint = "query_range" if start and end and step else "query"
-    url = f"{PROMETHEUS_URL}/api/v1/{endpoint}"
+    url = f"{PROMETHEUS_INT_URL}/api/v1/{endpoint}"
     
     params = {"query": query}
     if start and end and step:
@@ -36,7 +40,7 @@ def query_prometheus(query, start=None, end=None, step=None):
         response.raise_for_status()
         return response.json()["data"]["result"]
     except requests.exceptions.ConnectionError:
-        st.warning(f"Cannot connect to Prometheus at {PROMETHEUS_URL}")
+        st.warning(f"Cannot connect to Prometheus at {PROMETHEUS_INT_URL}")
         return []
     except Exception as e:
         st.error(f"Prometheus query failed: {str(e)}")
@@ -117,6 +121,32 @@ with col2:
     else:
         st.info("No accuracy data available")
 
+st.divider()
+
+# I show system resource metrics
+st.subheader("System Resources")
+
+system_queries = {
+    "CPU Usage": "100 - (avg(rate(node_cpu_seconds_total{mode='idle'}[5m])) * 100)",
+    "Memory Usage": "100 * (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes))",
+    "Disk Read Rate": "rate(node_disk_read_bytes_total[5m])",
+    "mlflowk Receive": "rate(node_mlflowk_receive_bytes_total[5m])"
+}
+
+cols = st.columns(len(system_queries))
+for i, (name, query) in enumerate(system_queries.items()):
+    with cols[i]:
+        data = query_prometheus(query)
+        value = get_metric_value(data)
+        unit = "%" if "Usage" in name else "bytes/s"
+        st.metric(name, f"{value:.1f} {unit}")
+
+# I provide connection status information
+st.subheader("Connection Status")
+st.info(f"Prometheus: {PROMETHEUS_INT_URL} | {PROMETHEUS_PUBLIC_URL}")
+
+st.divider()
+
 # I show API performance metrics
 st.subheader("API Performance")
 
@@ -153,27 +183,6 @@ if handler_data:
 else:
     st.info("No endpoint data available")
 
-# I show system resource metrics
-st.subheader("System Resources")
-
-system_queries = {
-    "CPU Usage": "100 - (avg(rate(node_cpu_seconds_total{mode='idle'}[5m])) * 100)",
-    "Memory Usage": "100 * (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes))",
-    "Disk Read Rate": "rate(node_disk_read_bytes_total[5m])",
-    "Network Receive": "rate(node_network_receive_bytes_total[5m])"
-}
-
-cols = st.columns(len(system_queries))
-for i, (name, query) in enumerate(system_queries.items()):
-    with cols[i]:
-        data = query_prometheus(query)
-        value = get_metric_value(data)
-        unit = "%" if "Usage" in name else "bytes/s"
-        st.metric(name, f"{value:.1f} {unit}")
-
-# I provide connection status information
-st.subheader("Connection Status")
-st.info(f"Prometheus: {PROMETHEUS_URL}")
 
 # Pagination and footer
 st.markdown("---")
