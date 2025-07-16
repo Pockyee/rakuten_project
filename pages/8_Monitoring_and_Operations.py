@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(7 / 10)
+st.progress(8 / 10)
 st.title("Monitoring and Operations")
 
 # Get service URLs from environment

@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(5 / 10)
+st.progress(6 / 10)
 st.title("Airflow")
 
 # Airflow content

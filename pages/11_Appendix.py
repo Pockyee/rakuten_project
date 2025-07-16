@@ -135,7 +135,6 @@ volume_df = pd.DataFrame(volume_data)
 dag_df = pd.DataFrame(dag_data)
 custom_images_df = pd.DataFrame(custom_images_data)
 
-st.progress(10 / 10)
 st.title("Appendix")
 
 # Project Outline content

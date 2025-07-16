@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(7 / 10)
+st.progress(9 / 10)
 st.title("Business Metrics and Insights ")
 
 # Create tabs for the three main sections

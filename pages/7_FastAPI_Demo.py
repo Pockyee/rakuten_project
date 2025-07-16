@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(6 / 10)
+st.progress(7 / 10)
 st.title("FastAPI Demonstration")
 
 PUBLIC_IP = get_public_ip()
