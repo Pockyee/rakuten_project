@@ -47,7 +47,7 @@ def add_pagination_and_footer(current_page_path):
 
     # Copyright line and page indicator
     st.markdown(
-        f"© 2025 // Marie Ernø-Møller, Peter Stieg, Qi Bao, Robert Wilson // [Page {current_index + 1}/{len(PAGE_SEQUENCE)}]"
+        f"© 2025 // Marie Ernø-Møller, Peter Stieg, Qi Bao, Robert Wilson // [Page {current_index + 1}/{len(PAGE_SEQUENCE) - 1}]"
     )
 
 
