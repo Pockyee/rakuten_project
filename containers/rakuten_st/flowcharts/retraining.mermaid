@@ -62,7 +62,7 @@ graph TD
 
     %% REAL-TIME SERVING [RTS]
     ProductionAPI["Production FastAPI"]
-    RealTimePredictions["Real-time Predictions"]
+    RealTimePredictions["Real-Time Predictions"]
 
     %% RTS EDGES
     ModelDeployment --> ProductionAPI
@@ -103,10 +103,10 @@ graph TD
     linkStyle default stroke:#999,stroke-width:2px,fill:none;
 
     %% Node-specific styling
-    classDef process fill:#E0F2FE,stroke:#007BFF,stroke-width:1.5px;
-    classDef decision fill:#FFF3E0,stroke:#FFA000,stroke-width:1.5px;
-    classDef storage fill:#FEE2E2,stroke:#D32F2F,stroke-width:1.5px;
-    classDef value fill:#ECFDF5,stroke:#28A745,stroke-width:1.5px;
+    classDef process fill:#E0F2FE,stroke:#007BFF,stroke-width:2px;
+    classDef decision fill:#FFF3E0,stroke:#FFA000,stroke-width:2px;
+    classDef storage fill:#FEE2E2,stroke:#D32F2F,stroke-width:2px;
+    classDef value fill:#ECFDF5,stroke:#28A745,stroke-width:2px;
 
     %% Applying classes to specific nodes (grouping for readability)
     class FeatureEngineering,ModelTraining,ModelEvaluation,ModelDeployment process; 

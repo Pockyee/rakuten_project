@@ -1,5 +1,5 @@
 graph TD
-    subgraph Example ["Text Example"]
+    subgraph Example ["TEXT EXAMPLE"]
         J["Original Data:<br/>**designation**: Smartphone Samsung Galaxy S21<br/>**description**: Écran AMOLED 6.2 pouces. Appareil photo 64MP. Batterie 4000mAh et charge rapide!<br/>**prdtypecode**: 2280"]
         K["Combined Text:<br/>Smartphone Samsung Galaxy S21 Écran AMOLED 6.2 pouces. Appareil photo 64MP. Batterie 4000mAh et charge rapide!"]
         L["Text Versions Created"]
@@ -11,7 +11,15 @@ graph TD
         R["Ready for ML Training<br/>1000-dimensional TF-IDF vector<br/>Category: 2280 (Electronics)"]
     end
 
-    subgraph Process ["Process Steps"]
+    %% TEXT EXAMPLES EDGES
+    A --> B
+    B --> C
+    C --> D & E & F
+    E --> G
+    G --> H
+    H --> I
+
+    subgraph Process ["PROCESS"]
         A["PostgreSQL Database<br/>x_train: id, designation, description<br/>y_train: id, prdtypecode"]
         B["DataFrame Processing<br/>Fill NaN values<br/>Combine designation + description"]
         C["Create Text Versions"]
@@ -23,35 +31,34 @@ graph TD
         I["Ready for Training"]
     end
 
-    A --> B
-    B --> C
-    C --> D
-    C --> E  
-    C --> F
-    E --> G
-    G --> H
-    H --> I
-
+    %% PROCESS NODES
     J --> K
     K --> L
-    L --> M
-    L --> N
-    L --> O
+    L --> M & N & O
     N --> P
     P --> Q
     Q --> R
 
-    classDef database fill:#e8f4f8,stroke:#3498db,stroke-width:2px
-    classDef processing fill:#fff3cd,stroke:#ffc107,stroke-width:2px
-    classDef textVersion fill:#e8f5e8,stroke:#28a745,stroke-width:2px
+    %% Apply default styles to ALL nodes
+    classDef default fill:#FFF,stroke:#333,stroke-width:2px;
+
+    %% Apply default styles to ALL edges
+    linkStyle default stroke:#999,stroke-width:2px,color:black;
+
+    %% INVISIBLE SUBRAPHS
+    classDef invisibleSubgraph fill:transparent,stroke:none,stroke-width:0px;
+    class Example,Process invisibleSubgraph
+
+    classDef storage fill:#FEE2E2,stroke:#DC2626,stroke-width:2px
+    classDef processing fill:#FFF3E0,stroke:#FFA000,stroke-width:2px
+    classDef textVersion fill:#ECFDF5,stroke:#28A745,stroke-width:2px
     classDef feature fill:#f8e8f8,stroke:#6f42c1,stroke-width:2px
     classDef output fill:#e8e8f8,stroke:#6c757d,stroke-width:2px
     classDef ready fill:#d4edda,stroke:#28a745,stroke-width:2px
     classDef example fill:#f0f8ff,stroke:#87ceeb,stroke-width:2px
 
-    class A,J database
-    class B,K processing
-    class C,L processing
+    class A,J storage
+    class B,C,K,L processing
     class D,E,F,M,N,O textVersion
     class G,P feature
     class H,Q output
