@@ -13,7 +13,7 @@ st.set_page_config(
 st.progress(4 / 10)
 st.title("Retraining")
 
-with open("containers/rakuten_st/flowcharts/rakuten_mlops_retraining.mermaid", "r") as file:
+with open("containers/rakuten_st/flowcharts/retraining.mermaid", "r") as file:
     retraining_fc = file.read() # _fc as in "_flowchart"
     st_mermaid(retraining_fc, height="auto", pan=True, zoom=True, show_controls=True)
 
