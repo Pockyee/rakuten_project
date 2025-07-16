@@ -16,7 +16,7 @@ fastapi_demo = st.Page("pages/7_FastAPI_Demo.py", title="7. FastAPI Demo")
 monitoring_and_operations = st.Page("pages/8_Monitoring_and_Operations.py", title="8. Monitoring and Operations")
 business_metrics_and_insights = st.Page("pages/9_Business_Metrics_and_Insights.py", title="9. Business Metrics and Insights")
 future_improvements = st.Page("pages/10_Future_Improvements.py", title="10. Future Improvements")
-appendix = st.Page("pages/11_Appendix.py", title="11. Appendix")
+appendix = st.Page("pages/11_Appendix.py", title="Appendix")
 
 
 # Create navigation with grouped pages
