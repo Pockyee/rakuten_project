@@ -1,4 +1,4 @@
-#pages/7_Monitoring_and_Operations.py
+#pages/8_Monitoring_and_Operations.py
 import streamlit as st
 import requests
 import pandas as pd
@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(7 / 9)
+st.progress(7 / 10)
 st.title("Monitoring and Operations")
 
 # Get service URLs from environment
@@ -213,4 +213,4 @@ if st.checkbox("🔄 Auto-refresh every 30 seconds"):
 
 # Pagination and footer
 st.markdown("---")
-add_pagination_and_footer("pages/7_Monitoring_and_Operations.py")
+add_pagination_and_footer("pages/8_Monitoring_and_Operations.py")

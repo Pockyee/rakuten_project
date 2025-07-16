@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(7 / 9)
+st.progress(7 / 10)
 st.title("Business Metrics and Insights ")
 
 # Create tabs for the three main sections
@@ -82,4 +82,4 @@ with tab3:
 
 # Pagination and footer
 st.markdown("---")
-add_pagination_and_footer("pages/8_Business_Metrics_and_Insights.py")
+add_pagination_and_footer("pages/9_Business_Metrics_and_Insights.py")

@@ -1,4 +1,4 @@
-# pages/6_FastAPI_demo.py
+# pages/7_FastAPI_Demo.py
 import streamlit as st
 import requests
 import os
@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(6 / 9)
+st.progress(6 / 10)
 st.title("FastAPI Demonstration")
 
 PUBLIC_IP = get_public_ip()
@@ -121,4 +121,4 @@ if st.button("Test Endpoint", type="primary", use_container_width=True):
 
 # Pagination and footer
 st.markdown("---")
-add_pagination_and_footer("pages/6_FastAPI_Demo.py")
+add_pagination_and_footer("pages/7_FastAPI_Demo.py")

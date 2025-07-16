@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.progress(8 / 9)
+st.progress(8 / 10)
 st.title("Future Improvements")
 
 # Replace content after st.title("Future Improvements") with:
@@ -61,4 +61,4 @@ st.markdown("""
 
 # Pagination and footer
 st.markdown("---")
-add_pagination_and_footer("pages/9_Future_Improvements.py")
+add_pagination_and_footer("pages/10_Future_Improvements.py")

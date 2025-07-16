@@ -1,4 +1,4 @@
-# 5_Airflow.py
+# 6_Airflow.py
 import streamlit as st
 from containers.rakuten_st.streamlit_utils import add_pagination_and_footer
 
@@ -61,4 +61,4 @@ with col_img2:
 
 # Pagination and footer
 st.markdown("---")
-add_pagination_and_footer("pages/5_Airflow.py")
+add_pagination_and_footer("pages/6_Airflow.py")
