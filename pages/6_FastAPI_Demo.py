@@ -42,7 +42,7 @@ with st.form("prediction_form"):
         help="Enter the product description (in French)"
     )
     
-    submitted = st.button("Get Prediction", type="primary")
+    submitted = st.form_submit_button("Get Prediction", type="primary",  use_container_width=True)
 
 if submitted and (title or description):
     with st.spinner("Retrieving prediction..."):
