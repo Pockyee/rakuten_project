@@ -29,7 +29,7 @@ st.markdown(
     
     Use the sidebar or pagination to browse through the presentation of the project and the team, ...
     
-    **:material/folder_code: GitHub Repository:** [may25_bds_classification-of-rakuten-e-commerce-products](https://github.com/PeterStieg/may25_bds_classification-of-rakuten-e-commerce-products/)
+    **:material/folder_code: GitHub Repository:** [may25_bmlops_classification-of-rakuten-e-commerce-products](https://github.com/PeterStieg/may25_bmlops_classification-of-rakuten-e-commerce-products/)
     
     """
 )
