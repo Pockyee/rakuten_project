@@ -58,16 +58,17 @@ if submitted and (title or description):
             )
             
             if response.status_code == 200:
-                result = response.json()
-                prediction = result["predictions"][0]
-                
-                # Display main prediction
-                st.metric(
-                    "Predicted Category",
-                    prediction["category"],
-                    f"{prediction['confidence']:.1%} confidence"
-                )
-                
+                with st.expander("**Show** Prediction", expanded=False):
+                    result = response.json()
+                    prediction = result["predictions"][0]
+                    
+                    # Display main prediction
+                    st.metric(
+                        "Predicted Category",
+                        prediction["category"],
+                        f"{prediction['confidence']:.1%} confidence"
+                    )
+                    
                 # Display top 3 predictions
                 if len(prediction["top_3"]) > 1:
                     with st.expander("**Show** Top 3 Predictions", expanded=False):
@@ -75,9 +76,10 @@ if submitted and (title or description):
                             st.write(f"{i}. **{pred['category']}** ({pred['confidence']:.1%})")
 
             else:
-                st.error(f"Prediction failed: {response.status_code}")
-                st.code(response.text)
-                
+                with st.expander("**Show** Error Message", expanded=False):
+                    st.error(f"Prediction failed: {response.status_code}")
+                    st.code(response.text)
+                    
         except requests.exceptions.ConnectionError:
             st.error("Cannot connect to FastAPI service. Is it running?")
         except requests.exceptions.Timeout:
@@ -93,7 +95,7 @@ endpoint = st.selectbox(
     ["/health", "/models/", "/predict/"]
 )
 
-if st.button("Test Endpoint", type="primary"):
+if st.button("Test Endpoint", type="primary", use_container_width=True):
     try:
         if endpoint == "/health":
             response = requests.get(f"{FASTAPI_INT_URL}{endpoint}")
