@@ -5,7 +5,7 @@ from containers.rakuten_st.streamlit_utils import add_pagination_and_footer
 
 # Page configuration
 st.set_page_config(
-    page_title="MAY25 BDS // Team Presentation",
+    page_title="MAY25 BMLOPS // Team Presentation",
     page_icon="containers/rakuten_st/images/logos/rakuten-favicon.ico",
     layout="wide",
     initial_sidebar_state="expanded"

@@ -3,7 +3,7 @@ import streamlit as st
 from containers.rakuten_st.streamlit_utils import add_pagination_and_footer
 
 st.set_page_config(
-    page_title="MAY25 BDS // Airflow",
+    page_title="MAY25 BMLOPS // Airflow",
     page_icon="containers/rakuten_st/images/logos/rakuten-favicon.ico",
     layout="wide",
 )
