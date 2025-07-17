@@ -60,7 +60,7 @@ with tp_col2:
 
     # Display primary contribution information directly
     st.write("**Primary Contributions:**")
-    st.write("• Debugging, Resting & Refactoring")
+    st.write("• Debugging, Testing & Refactoring")
     st.write("• Preprocessing of text data")
     st.write("• Streamlit presentation")
 
